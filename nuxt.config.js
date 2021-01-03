@@ -5,13 +5,26 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Goldkarat - Nâng tầm đẳng cấp'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: ''
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  loading: {
+    color : "#fdb866",
+    height : "3px"
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/css/zipped.css'
@@ -36,7 +49,7 @@ export default {
   axios: {
     baseURL: 'http://127.0.0.1:8000',
     headers : {
-      Authorization: "Bearer b19b115b0339b53f5b9bae070adeedfa6ef1f351379230328d249ecea41b5a26"
+      Authorization: "Bearer YbmIKnLQhdqvr1ZKgPSO0LvH5aVThz5XkHRiRyjjorrervCLJMH3heoGNruo7YIBPqfLB6R505Iv3M9G"
     }
   },
   publicRuntimeConfig: {

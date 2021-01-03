@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper bg--shaft">
+  <div class='wrapper bg--shaft'>
     <Header />
-    <Nuxt />
+    <Nuxt keep-alive/>
     <Footer />
   </div>
 </template>
@@ -16,15 +16,10 @@ export default {
     }
   },
   methods: {
-    getData() {
-      this.$axios.$get('/api/config').then(response => {
-        this.$store.state.global = response.data
-          
-      })
-    }
+
   },
   created() {
-    this.getData()
+
   }
 }
 
