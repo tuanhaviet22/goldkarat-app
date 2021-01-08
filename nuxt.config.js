@@ -25,6 +25,17 @@ export default {
     color : "#fdb866",
     height : "3px"
   },
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push(
+        {
+          name: 'post-slug-id',
+          path: '/:slug-p:id',
+          component: resolve(__dirname, 'pages/post/_id.vue')
+        }
+      )
+    }
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/css/zipped.css'

@@ -10,11 +10,12 @@
             </div>
           </div>
           <div class='col-lg-2 col-12 order-lg-2 order-1 text-center'>
-            <a href='http://goldkarat.tuanha.asia' class='logo-box mb-md--30'>
+            <NuxtLink to="/" class='logo-box mb-md--30'>
               <img
                 :src='config.config.logo_header'
-                :alt='config.config.name_website'>
-            </a>
+                :alt='config.config.name_website'
+                :title='config.config.name_website'>
+            </NuxtLink>
           </div>
           <div class='col-lg-5 col-md-7 col-sm-6 order-lg-3 order-3'>
             <div class='header-toolbar'>

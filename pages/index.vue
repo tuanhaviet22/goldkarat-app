@@ -1,13 +1,12 @@
 <template>
   <div class="container">
-
+    <NuxtLink to="/sdf-dfsdf-p35">Test</NuxtLink>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
 export default {
-  layout : 'main',
   data() {
     return {
       info : {},
