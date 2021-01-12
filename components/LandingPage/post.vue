@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12">
           <div class="section-title mb--30">
-            <h2>{{ title }}</h2>
+            <h2>{{ module.module_title }}</h2>
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@
             ref="list-post"
             :options="settings"
           >
-            <swiper-slide v-for="post in listPost" :key="post.post_id">
+            <swiper-slide v-for="post in listPost" v-if="listPost.length > 0" :key="post.post_id">
               <article class="blog">
                 <a
                   :href="post.post_slug + '-p' + post.post_id"
@@ -49,7 +49,7 @@
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 
 export default {
-  name: 'ListPost',
+  name: 'post',
   components: {
     Swiper,
     SwiperSlide
@@ -58,7 +58,7 @@ export default {
     swiper: directive
   },
   props: [
-    'title', 'id'
+    'id'
   ],
   data: function() {
     return {
@@ -66,13 +66,25 @@ export default {
       settings: {
         loop: true,
         slidesPerView: 3,
-        spaceBetween : 20
-        // Some Swiper option/callback...
-      }
+        spaceBetween: 20
+      },
+      module: {}
+    }
+  },
+  methods: {
+     handleData(string) {
+      let result = []
+      let data = JSON.parse(string)
+      data.forEach(item => {
+          result.push(item.id)
+      })
+      // result = await this.$axios.$get('/api/post/list' + result.join())
+      return result;
     }
   },
   async fetch() {
-    this.listPost = await this.$axios.$get('/api/post/related/' + this.id)
+    this.module = await this.$axios.$get('/api/module/' + this.id)
+    this.listPost = this.handleData(this.module.module_metadata)
   }
 }
 </script>

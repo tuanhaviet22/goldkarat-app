@@ -1,16 +1,23 @@
 <template>
-  <div class="container">
-    <NuxtLink to="/sdf-dfsdf-p35">Test</NuxtLink>
+  <div class="__app">
+    <div v-for="module in handleArrayModule">
+      <banner :id="module.id" v-if="module.type == 'banner'" />
+      <post :id="module.id" v-if="module.type == 'post'"/>
+    </div>
   </div>
 </template>
 
 <script>
 // import axios from 'axios'
+import Banner from '@/components/LandingPage/banner'
+import Post from '@/components/LandingPage/post'
 export default {
+  components: { Banner,Post },
   data() {
     return {
       info : {},
-      modules : null
+      modules : [],
+      modulesBlade : []
     }
   },
   head() {
@@ -31,13 +38,31 @@ export default {
       ]
     }
   },
-  mounted() {
-
+  computed: {
+    handleArrayModule(){
+      let result = [];
+      this.modules.forEach((item,key) => {
+        let data = {
+          id : item,
+          blade : this.modulesBlade[key],
+          type : this.handleStringBlade(this.modulesBlade[key])
+        }
+        result.push(data)
+      })
+      return result
+    }
+  },
+  methods :{
+    handleStringBlade(string){
+      return string.substr(0 ,string.length - ((string).split('-'))[(string).split('-').length - 1].length -1 )
+    }
   },
   asyncData({$axios}){
     return $axios.get('/api/homepage').then(response => {
       return {
-        info : response.data[0]
+        info : response.data[0],
+        modules : (response.data[0].page_modules).split(','),
+        modulesBlade : (response.data[0].page_module_blade).split(',')
       }
     })
   }
