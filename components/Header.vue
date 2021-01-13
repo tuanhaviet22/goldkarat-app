@@ -59,9 +59,9 @@ export default {
   },
   async fetch() {
     this.config = await fetch('http://127.0.0.1:8000/api/config', {
-      headers: {
-        Authorization: 'Bearer YbmIKnLQhdqvr1ZKgPSO0LvH5aVThz5XkHRiRyjjorrervCLJMH3heoGNruo7YIBPqfLB6R505Iv3M9G'
-      }
+      // headers: {
+      //   Authorization: 'Bearer 612LT8gJZHM1obd1C8jmF7ZAiLKLxnLdjyebd7uHjFblS7PbR63WDIXgbZHG3weUwZhKhELVIvsurDfp'
+      // }
     }).then(response => response.json())
   }
 }

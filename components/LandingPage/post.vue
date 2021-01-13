@@ -72,19 +72,11 @@ export default {
     }
   },
   methods: {
-     handleData(string) {
-      let result = []
-      let data = JSON.parse(string)
-      data.forEach(item => {
-          result.push(item.id)
-      })
-      // result = await this.$axios.$get('/api/post/list' + result.join())
-      return result;
-    }
+
   },
   async fetch() {
     this.module = await this.$axios.$get('/api/module/' + this.id)
-    this.listPost = this.handleData(this.module.module_metadata)
+    this.listPost = this.module.module_raw_data
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <section class="banner-block" :id="'banner-block-'+id" v-if="module.module_background == null">
     <swiper ref="banner-slide" :options="settings" >
-      <swiper-slide v-for="banner in handleData" :key="1">
+      <swiper-slide v-for="(banner,key) in listBanner" :key="key">
         <div class="single-slider content-v-center">
           <img :src="banner.item_slide_image" :alt="banner.item_slide_image_alt" :title="banner.item_slide_image_title"
                class="w-100 d-block">
@@ -45,16 +45,15 @@ export default {
         spaceBetween: 20
         // Some Swiper option/callback...
       },
-      module: {}
+      module: {},
+      listBanner : []
     }
   },
   computed: {
-    handleData() {
-      return JSON.parse(this.module.module_metadata)
-    }
   },
   async fetch() {
-    this.module = await this.$axios.$get('/api/module/' + this.id)
+    this.module = await this.$axios.$get('/api/module/' + this.id);
+    this.listBanner = JSON.parse(this.module.module_metadata)
   }
 }
 </script>
