@@ -1,3 +1,14 @@
+// import axios from 'axios'
+// const dynamicRoutes = async () => {
+//   const posts = await axios.get('http://127.0.0.1:8000/api/post')
+//   const routesPost = posts.data.map((post) => {
+//     return {
+//       route : `/post/${post.post_id}`,
+//       payload : post
+//     }
+//   });
+//   return routesPost
+// }
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -39,9 +50,9 @@ export default {
       )
     }
   },
-  generate: {
-    fallback: true
-  },
+  // generate: {
+  //   routes: dynamicRoutes
+  // },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/css/zipped.css',
