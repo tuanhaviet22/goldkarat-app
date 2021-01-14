@@ -37,7 +37,7 @@ export default {
     height : "3px"
   },
   ssr : true,
-  target: 'static',
+  target: 'server',
   router: {
     base: '/',
     extendRoutes (routes, resolve) {
