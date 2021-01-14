@@ -96,8 +96,8 @@ export default {
   build: {},
   server: {
     host: '0.0.0.0',
-    port : 80
   },
+  mode: "universal",
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   }
