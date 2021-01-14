@@ -28,11 +28,7 @@ export default {
     }
   },
   async fetch() {
-    this.menu = await fetch('http://127.0.0.1:8000/api/menu', {
-      headers: {
-        Authorization: 'Bearer YbmIKnLQhdqvr1ZKgPSO0LvH5aVThz5XkHRiRyjjorrervCLJMH3heoGNruo7YIBPqfLB6R505Iv3M9G'
-      }
-    }).then(response => response.json())
+    this.menu = await this.$axios.$get('/api/menu')
   }
 }
 </script>
