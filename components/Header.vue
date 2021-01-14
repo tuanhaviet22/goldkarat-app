@@ -58,11 +58,7 @@ export default {
     }
   },
   async fetch() {
-    this.config = await fetch('http://127.0.0.1:8000/api/config', {
-      // headers: {
-      //   Authorization: 'Bearer 612LT8gJZHM1obd1C8jmF7ZAiLKLxnLdjyebd7uHjFblS7PbR63WDIXgbZHG3weUwZhKhELVIvsurDfp'
-      // }
-    }).then(response => response.json())
+    this.config = await this.$axios.$get('/api/config')
   }
 }
 
